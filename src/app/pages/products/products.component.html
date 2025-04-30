@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Productos de la Categoría</h2>
+
+  <div class="row">
+    @if (productos.length === 0) {
+      <div class="col-12 text-center">
+        <p>No hay productos en esta categoría.</p>
+      </div>
+    } @else {
+      @for (producto of productos; track producto.id) {
+        <div class="col-md-4 mb-3">
+          <div class="card h-100 shadow-sm" (click)="abrirModal(producto)">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.name }}</h5>
+              <p class="card-text">Cantidad: {{ producto.quantity }}</p>
+              <p class="card-text">Precio: {{ producto.price | currency:'EUR':'symbol' }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>
+
+<!-- Modal para crear pedido -->
+<div class="modal" tabindex="-1" [class.show]="mostrarModal" style="display: block;" *ngIf="mostrarModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nuevo Pedido - {{ productoSeleccionado?.name }}</h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="crearPedido()" #pedidoForm="ngForm">
+          <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" required [(ngModel)]="cantidad" name="cantidad">
+          </div>
+          <div class="mb-3">
+            <label for="numeroPedido" class="form-label">Número de Pedido</label>
+            <input type="text" class="form-control" id="numeroPedido" required [(ngModel)]="numeroPedido" name="numeroPedido">
+          </div>
+          <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
