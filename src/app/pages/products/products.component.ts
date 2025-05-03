@@ -46,20 +46,22 @@ export class ProductsComponent {
     this.productoSeleccionado = null;
     this.cantidad = 1;
     this.numeroPedido = '';
+    window.location.reload();
   }
+  
 
   crearPedido(): void {
     if (!this.productoSeleccionado || !this.cantidad || !this.numeroPedido) return;
-  
-    const usuario = localStorage.getItem('user'); // <- Obtener usuario desde localStorage
-  
+
+    const usuario = JSON.parse(localStorage.getItem('user') || '""');
+
     const pedido = {
       producto_id: this.productoSeleccionado.id,
       cantidad: this.cantidad,
       numero_pedido: this.numeroPedido,
       usuario: usuario // <- Añadir al cuerpo del pedido
     };
-  
+
     this.pedidosService.crearPedido(pedido).subscribe({
       next: () => {
         alert('Pedido creado exitosamente');
@@ -71,5 +73,5 @@ export class ProductsComponent {
       }
     });
   }
-  
+
 }

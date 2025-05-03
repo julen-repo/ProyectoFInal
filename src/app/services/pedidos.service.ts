@@ -11,6 +11,7 @@ export class PedidosService {
   constructor(private http: HttpClient) {}
 
   crearPedido(pedido: { producto_id: number; cantidad: number; numero_pedido: string }): Observable<any> {
+    console.log(pedido);
     return this.http.post(this.apiUrl, pedido);
   }
 }
