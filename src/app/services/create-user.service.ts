@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CreateUserService {
 
-  private apiUrl = 'http://localhost/API/createUser.php';  // URL de tu archivo PHP
+  private apiUrl = 'http://192.168.1.34/API/createUser.php';  // URL de tu archivo PHP
 
   constructor(private http: HttpClient) { }
 

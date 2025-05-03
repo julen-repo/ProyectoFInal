@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PedidosService {
-  private apiUrl = 'http://localhost/API/pedidos.php';
+  private apiUrl = 'http://192.168.1.34/API/pedidos.php';
 
   constructor(private http: HttpClient) {}
 
