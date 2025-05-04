@@ -34,7 +34,7 @@ export class OrdersComponent implements OnInit {
   }
 
   getTotal(): number {
-    return 123.45; // prueba fija
+    return this.pedidoSeleccionado.reduce((acc, item) => acc + (item.cantidad * item.price), 0);
   }
 
   exportarAExcel(): void {

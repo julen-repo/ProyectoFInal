@@ -34,7 +34,9 @@ export class ProductsComponent {
         error: (err) => console.error('Error cargando productos', err)
       });
     }
+
   }
+
 
   abrirModal(producto: any): void {
     this.productoSeleccionado = producto;
