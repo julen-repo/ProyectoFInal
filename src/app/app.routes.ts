@@ -5,6 +5,7 @@ import { CreateUsersComponent } from './pages/menu/create/create-users/create-us
 import { CreateCategoriesComponent } from './pages/menu/create/create-categories/create-categories.component';
 import { CreateProductsComponent } from './pages/menu/create/create-products/create-products.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { OrdersComponent } from './pages/menu/orders/orders.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'createProducts',
         component: CreateProductsComponent
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent
     }
 ];

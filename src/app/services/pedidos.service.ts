@@ -6,12 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PedidosService {
-  private apiUrl = 'http://192.168.1.34/API/pedidos.php';
+  private baseUrl = 'http://192.168.1.34/API';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  crearPedido(pedido: { producto_id: number; cantidad: number; numero_pedido: string }): Observable<any> {
+  crearPedido(pedido: { producto_id: number; cantidad: number; numero_pedido: string; usuario: string }): Observable<any> {
     console.log(pedido);
-    return this.http.post(this.apiUrl, pedido);
+    return this.http.post(`${this.baseUrl}/pedidos.php`, pedido);
+  }
+
+  getPedidos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/get_pedidos.php`);
+  }
+
+  getDetallesPedido(numeroPedido: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/get_pedido_detalle.php?numero_pedido=${numeroPedido}`);
   }
 }

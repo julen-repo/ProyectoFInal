@@ -28,4 +28,7 @@ export class MenuComponent {
   go_createProducts(): void {
     this.router.navigate(['createProducts']);
   }
+  go_orders(): void {
+    this.router.navigate(['orders']);
+  }
 }
