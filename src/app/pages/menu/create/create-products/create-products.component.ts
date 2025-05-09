@@ -10,7 +10,8 @@ import { Validators } from '@angular/forms'; // <--- Asegúrate de tener esto
   selector: 'app-create-products',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,MenuComponent],
-  templateUrl: './create-products.component.html'
+  templateUrl: './create-products.component.html',
+  styleUrls: ['./create-products.component.css']
 })
 export class CreateProductsComponent implements OnInit {
   productForm = new FormGroup({

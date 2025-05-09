@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="categories">
-      <i class="bi bi-house-door-fill"></i>
+    <a class="navbar-brand d-flex align-items-center" href="categories">
+      <i class="bi bi-house-door-fill me-2"></i>
+      <span class="fw-bold">Inventario</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,23 +12,33 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
         <ng-container *ngIf="role === 'admin'">
           <li class="nav-item">
-            <a class="nav-link btn btn-primary" (click)="go_createUsers()">Crear Usuarios</a>
+            <button class="btn btn-outline-primary" (click)="go_createUsers()">
+              <i class="bi bi-person-plus"></i> Crear Usuarios
+            </button>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-success" (click)="go_createCategories()">Crear Categorias</a>
+            <button class="btn btn-outline-success" (click)="go_createCategories()">
+              <i class="bi bi-folder-plus"></i> Crear Categorías
+            </button>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-warning" (click)="go_createProducts()">Crear Productos</a>
+            <button class="btn btn-outline-warning text-dark" (click)="go_createProducts()">
+              <i class="bi bi-box-seam"></i> Crear Productos
+            </button>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-warning" (click)="go_orders()">Pedidos</a>
+            <button class="btn btn-outline-info" (click)="go_orders()">
+              <i class="bi bi-cart-check"></i> Pedidos
+            </button>
           </li>
         </ng-container>
         <li class="nav-item">
-          <a class="nav-link btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</a>
+          <button class="btn btn-outline-danger" (click)="cerrarSesion()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+          </button>
         </li>
       </ul>
     </div>

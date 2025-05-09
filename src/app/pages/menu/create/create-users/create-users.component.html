@@ -1,37 +1,46 @@
 <app-menu></app-menu>
 
 <div class="container mt-5">
-    <h2>Crear Usuario</h2>
-    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-12 col-md-6 mb-3">
-          <label for="username" class="form-label">Nombre de Usuario</label>
-          <input type="text" class="form-control" id="username" formControlName="username" required>
-        </div>
-  
-        <div class="col-12 col-md-6 mb-3">
-          <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="password" formControlName="password" required>
-        </div>
-  
-        <div class="col-12 col-md-6 mb-3">
-          <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="email" formControlName="email" required>
-        </div>
-  
-        <div class="col-12 col-md-6 mb-3">
-          <label for="role" class="form-label">Rol</label>
-          <select class="form-select" id="role" formControlName="role" required>
-            <option value="" disabled selected>Seleccione el rol</option>
-            <option value="admin">Administrador</option>
-            <option value="user">Usuario</option>
-          </select>
-        </div>
-  
-        <div class="col-12 mt-3">
-          <button type="submit" class="btn btn-primary w-100" [disabled]="!createUserForm.valid">Crear Usuario</button>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <h2 class="text-center text-success-emphasis mb-4">Crear Usuario</h2>
+          <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="username" class="form-label fw-semibold">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" formControlName="username" required />
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="password" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" class="form-control" id="password" formControlName="password" required />
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="email" class="form-label fw-semibold">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" formControlName="email" required />
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="role" class="form-label fw-semibold">Rol</label>
+                <select class="form-select" id="role" formControlName="role" required>
+                  <option value="" disabled selected>Seleccione el rol</option>
+                  <option value="admin">Administrador</option>
+                  <option value="user">Usuario</option>
+                </select>
+              </div>
+
+              <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary w-100" [disabled]="!createUserForm.valid">
+                  Crear Usuario
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
+    </div>
   </div>
-  
+</div>

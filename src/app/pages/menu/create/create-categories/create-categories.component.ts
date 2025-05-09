@@ -9,7 +9,8 @@ import { Validators } from '@angular/forms'; // <--- Asegúrate de tener esto
   selector: 'app-create-categories',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,MenuComponent],
-  templateUrl: './create-categories.component.html'
+  templateUrl: './create-categories.component.html',
+  styleUrls: ['./create-categories.component.css']
 })
 export class CreateCategoriesComponent {
   categoryForm = new FormGroup({

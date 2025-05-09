@@ -1,0 +1,48 @@
+/* Estilo general del fondo */
+.login-bg {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+  }
+  
+  /* Tarjeta de login */
+  .login-card {
+    background-color: #F4F6F7;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+  }
+  
+  /* Títulos y texto */
+  .login-card h2 {
+    color: #2C3E50;
+  }
+  
+  .login-card p {
+    color: #7F8C8D;
+  }
+  
+  /* Input moderno */
+  .login-card .form-control {
+    border-radius: 0.75rem;
+    border: 1px solid #CED4DA;
+    font-size: 1rem;
+  }
+  
+  .login-card .form-control:focus {
+    border-color: #2C3E50;
+    box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+  }
+  
+  /* Botón */
+  .login-card .btn-primary {
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-card .btn-primary:hover {
+    background-color: #1A252F;
+    border-color: #1A252F;
+  }
+  

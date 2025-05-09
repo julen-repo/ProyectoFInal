@@ -8,6 +8,7 @@ import { MenuComponent } from '../menu/menu.component';
   selector: 'app-logout',
   imports: [MenuComponent],
   templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent {
   private router = inject(Router);

@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
-   imports: [MenuComponent,ReactiveFormsModule],
+  imports: [MenuComponent, ReactiveFormsModule],
   templateUrl: './create-users.component.html',
   styleUrls: ['./create-users.component.css']
 })

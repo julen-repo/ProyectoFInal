@@ -1,0 +1,25 @@
+/* Encabezado */
+h2.text-primary {
+    color: #2C3E50;
+}
+
+/* Tarjetas de categoría */
+.category-card {
+    background-color: #F4F6F7;
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(44, 62, 80, 0.15);
+}
+
+/* Título dentro de la tarjeta */
+.category-card .card-title {
+    color: #2C3E50;
+    font-size: 1.1rem;
+    font-weight: 600;
+}

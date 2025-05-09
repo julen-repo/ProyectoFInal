@@ -1,0 +1,79 @@
+/* Estilo base de la navbar */
+.custom-navbar {
+    background-color: #2C3E50;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo común para todos los botones */
+.navbar .btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0.45rem 0.9rem;
+}
+
+/* Crear Usuarios - Azul */
+.navbar .btn-outline-primary {
+    background-color: #D6EAF8;
+    color: #21618C;
+    border: none;
+}
+
+.navbar .btn-outline-primary:hover {
+    background-color: #21618C;
+    color: white;
+}
+
+/* Crear Categorías - Verde */
+.navbar .btn-outline-success {
+    background-color: #D5F5E3;
+    color: #1D8348;
+    border: none;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #1D8348;
+    color: white;
+}
+
+/* Crear Productos - Amarillo */
+.navbar .btn-outline-warning {
+    background-color: #FCF3CF;
+    color: #B9770E;
+    border: none;
+}
+
+.navbar .btn-outline-warning:hover {
+    background-color: #B9770E;
+    color: white;
+}
+
+/* Pedidos - Celeste */
+.navbar .btn-outline-info {
+    background-color: #D6EAF8;
+    color: #117A8B;
+    border: none;
+}
+
+.navbar .btn-outline-info:hover {
+    background-color: #117A8B;
+    color: white;
+}
+
+/* Cerrar Sesión - Rojo */
+.navbar .btn-outline-danger {
+    background-color: #FADBD8;
+    color: #C0392B;
+    border: none;
+}
+
+.navbar .btn-outline-danger:hover {
+    background-color: #C0392B;
+    color: white;
+}
+
+/* Íconos con margen */
+.navbar .btn i {
+    margin-right: 4px;
+}

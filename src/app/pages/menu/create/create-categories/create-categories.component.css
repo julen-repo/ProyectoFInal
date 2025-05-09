@@ -1,0 +1,39 @@
+.card {
+    background-color: #ffffff;
+    border-radius: 1rem; /* Bordes redondeados más pronunciados */
+    transition: box-shadow 0.3s ease, transform 0.2s ease; /* Transición suave para sombra y transformación */
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra más visible */
+    transform: translateY(-5px); /* Efecto de "elevar" la tarjeta */
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+h2.text-primary-emphasis {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+button.btn-primary {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #0a58ca; /* Botón más claro al pasar por encima */
+}
+
+input.form-control,
+select.form-select {
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+}
+
+label {
+    font-weight: 500;
+}

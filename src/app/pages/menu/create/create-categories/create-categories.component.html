@@ -1,12 +1,22 @@
 <app-menu></app-menu>
+
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Crear Nueva Categoría</h2>
-    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="name" class="form-label">Nombre de la Categoría</label>
-        <input type="text" id="name" class="form-control" formControlName="name" placeholder="Ej: Electrónica" />
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <h2 class="text-center text-success-emphasis mb-4">Crear Nueva Categoría</h2>
+          <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Nombre de la Categoría</label>
+              <input type="text" id="name" class="form-control" formControlName="name" placeholder="Ej: Electrónica" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!categoryForm.valid">
+              Crear Categoría
+            </button>
+          </form>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary w-100" [disabled]="!categoryForm.valid">Crear Categoría</button>
-    </form>
+    </div>
   </div>
-  
+</div>
