@@ -43,7 +43,7 @@ try {
     }
 
     // Verificar si hay suficiente stock
-    if ($producto['quantity'] < $cantidad) {
+    if ($producto['quantity'] < $cantidad || $cantidad <= 0) {
         http_response_code(400);
         echo json_encode(["error" => "Stock insuficiente"]);
         exit;
@@ -71,9 +71,7 @@ try {
 
     // Enviar respuesta de éxito
     echo json_encode(["mensaje" => "Pedido creado y stock actualizado"]);
-
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(["error" => "Error de conexión con la base de datos: " . $e->getMessage()]);
 }
-?>
