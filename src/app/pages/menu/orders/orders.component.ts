@@ -43,7 +43,20 @@ export class OrdersComponent implements OnInit {
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     FileSaver.saveAs(blob, `Pedido_${this.numeroPedidoActual}.xlsx`);
+
+    // Lógica para eliminar el pedido después de exportar
+    this.pedidosService.eliminarPedidosPorNumeroPedido(this.numeroPedidoActual).subscribe({
+      next: () => {
+        // Eliminar visualmente el pedido de la lista
+        this.pedidos = this.pedidos.filter(p => p.numero_pedido !== this.numeroPedidoActual);
+        this.cerrarModal();
+      },
+      error: (err) => {
+        console.error('Error eliminando pedido:', err);
+      }
+    });
   }
+
 
   cerrarModal(): void {
     this.mostrarModal = false;

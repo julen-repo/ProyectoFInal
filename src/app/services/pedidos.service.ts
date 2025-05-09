@@ -22,4 +22,8 @@ export class PedidosService {
   getDetallesPedido(numeroPedido: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/get_pedido_detalle.php?numero_pedido=${numeroPedido}`);
   }
+  eliminarPedidosPorNumeroPedido(numeroPedido: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/eliminar_pedido.php?numero_pedido=${numeroPedido}`);
+  }
+  
 }
