@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { PedidosService } from '../../services/pedidos.service';
 import { MenuComponent } from '../menu/menu.component';
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [MenuComponent, CurrencyPipe, NgIf, NgFor, FormsModule],
+  imports: [MenuComponent, CurrencyPipe, NgIf, FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -19,24 +19,31 @@ export class ProductsComponent {
   productoSeleccionado: any = null;
   cantidad: number = 1;
   numeroPedido: string = '';
+  categoryId: number | null = null;
 
   constructor(
-    private route: ActivatedRoute,
     private productsService: ProductsService,
-    private pedidosService: PedidosService
-  ) { }
-
-  ngOnInit(): void {
-    const categoryId = this.route.snapshot.paramMap.get('id');
-    if (categoryId) {
-      this.productsService.getProductosPorCategoria(categoryId).subscribe({
-        next: (data) => this.productos = data,
-        error: (err) => console.error('Error cargando productos', err)
-      });
-    }
-
+    private pedidosService: PedidosService,
+    private router: Router
+  ) {
+    const navigation = this.router.getCurrentNavigation();
+    this.categoryId = navigation?.extras.state?.['categoryId'] ?? null;
   }
 
+  ngOnInit(): void {
+    // Si no se recibe el categoryId, redirigir
+    if (!this.categoryId) {
+      alert('No se ha recibido la categoría. Redirigiendo...');
+      this.router.navigate(['/categories']);
+      return;
+    }
+
+    // Obtener productos
+    this.productsService.getProductosPorCategoria(this.categoryId.toString()).subscribe({
+      next: (data) => this.productos = data,
+      error: (err) => console.error('Error cargando productos', err)
+    });
+  }
 
   abrirModal(producto: any): void {
     this.productoSeleccionado = producto;
@@ -50,7 +57,6 @@ export class ProductsComponent {
     this.numeroPedido = '';
     window.location.reload();
   }
-  
 
   crearPedido(): void {
     if (!this.productoSeleccionado || !this.cantidad || !this.numeroPedido) return;
@@ -61,7 +67,7 @@ export class ProductsComponent {
       producto_id: this.productoSeleccionado.id,
       cantidad: this.cantidad,
       numero_pedido: this.numeroPedido,
-      usuario: usuario // <- Añadir al cuerpo del pedido
+      usuario: usuario
     };
 
     this.pedidosService.crearPedido(pedido).subscribe({
@@ -75,5 +81,4 @@ export class ProductsComponent {
       }
     });
   }
-
 }

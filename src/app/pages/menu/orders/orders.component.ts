@@ -3,11 +3,11 @@ import { MenuComponent } from '../menu.component';
 import { PedidosService } from '../../../services/pedidos.service';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
-import { NgFor, NgIf, CurrencyPipe, NgClass } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-orders',
-  imports: [MenuComponent, NgFor, NgIf, NgClass, CurrencyPipe],
+  imports: [MenuComponent, CurrencyPipe],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })

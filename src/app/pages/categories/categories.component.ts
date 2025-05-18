@@ -27,7 +27,7 @@ export class CategoriesComponent {
       error: (err) => console.error('Error cargando categorías', err)
     });
     const role = localStorage.getItem('role');
-    console.log('Rol del usuario:',role);
+    console.log('Rol del usuario:', role);
   }
 
   cerrarSesion(): void {
@@ -36,6 +36,8 @@ export class CategoriesComponent {
     this.router.navigate(['']);
   }
   verProductos(categoryId: number): void {
-    this.router.navigate(['products', categoryId]);
+    this.router.navigate(['/products'], {
+      state: { categoryId: categoryId }
+    });
   }
 }
