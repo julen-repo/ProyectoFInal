@@ -9,7 +9,7 @@ import { Validators } from '@angular/forms'; // <--- Asegúrate de tener esto
 @Component({
   selector: 'app-create-products',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,MenuComponent],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent],
   templateUrl: './create-products.component.html',
   styleUrls: ['./create-products.component.css']
 })
@@ -26,7 +26,7 @@ export class CreateProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.categoriesService.getCategories().subscribe({
@@ -39,12 +39,17 @@ export class CreateProductsComponent implements OnInit {
     const product = this.productForm.value;
     if (product.name && product.category_id && product.quantity && product.price) {
       this.productsService.createProduct(product).subscribe({
-        next: () => {
-          alert('Producto creado correctamente');
-          this.productForm.reset();
+        next: (response) => {
+          if (response.success) {
+            alert(response.message); // Ejemplo: 'Producto creado'
+            this.productForm.reset();
+          } else {
+            alert('Error: ' + response.message); // Ejemplo: 'El producto ya existe'
+          }
         },
         error: (err) => {
           console.error('Error al crear producto', err);
+          alert('Error en la conexión con el servidor');
         }
       });
     }

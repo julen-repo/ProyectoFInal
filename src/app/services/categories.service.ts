@@ -11,14 +11,14 @@ export interface Category {
   providedIn: 'root'
 })
 export class CategoriesService {
-  private apiUrl = 'http://192.168.1.34/API/get_categories.php'; // ajusta la URL
+  private apiUrl = 'http://localhost:80/API/'; // ajusta la URL
 
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.apiUrl);
+    return this.http.get<Category[]>(`${this.apiUrl}/get_categories.php`);
   }
   createCategory(categoria: { name: string }) {
-    return this.http.post<any>('http://192.168.1.34/API/create_category.php', categoria);
+    return this.http.post<any>(`${this.apiUrl}create_category.php`, categoria);
   }
 }

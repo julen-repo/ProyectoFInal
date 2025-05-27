@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PedidosService {
-  private baseUrl = 'http://192.168.1.34/API';
+  private baseUrl = 'http://localhost:80/API';
 
   constructor(private http: HttpClient) { }
 
