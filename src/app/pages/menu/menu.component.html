@@ -14,6 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
         <ng-container *ngIf="role === 'admin'">
+          
           <li class="nav-item">
             <button class="btn btn-outline-primary" (click)="go_createUsers()">
               <i class="bi bi-person-plus"></i> Crear Usuarios
@@ -32,6 +33,11 @@
           <li class="nav-item">
             <button class="btn btn-outline-info" (click)="go_orders()">
               <i class="bi bi-cart-check"></i> Pedidos
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger" (click)="go_remove_and_modify()">
+              Borrar secciones
             </button>
           </li>
         </ng-container>

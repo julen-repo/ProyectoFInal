@@ -29,13 +29,17 @@ export class CreateUsersComponent {
     });
   }
 
-  // Función para enviar los datos al servicio
   onSubmit(): void {
     if (this.createUserForm.valid) {
       this.createUserService.createUser(this.createUserForm.value).subscribe({
         next: (response) => {
-          console.log('Usuario creado con éxito', response);
-          this.router.navigate(['categories']);  // Redirigir a una lista de usuarios o página deseada
+          if (response.success) {
+            console.log('Usuario creado con éxito', response);
+            this.router.navigate(['categories']);  // Redirigir a una lista de usuarios o página deseada
+          } else {
+            alert('Error al crear usuario:' + response.message);
+          }
+
         },
         error: (err) => {
           console.error('Error al crear usuario', err);

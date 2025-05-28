@@ -6,6 +6,7 @@ import { CreateCategoriesComponent } from './pages/menu/create/create-categories
 import { CreateProductsComponent } from './pages/menu/create/create-products/create-products.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/menu/orders/orders.component';
+import { RemoveAndModifyComponent } from './pages/menu/remove-and-modify/remove-and-modify.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +36,9 @@ export const routes: Routes = [
     {
         path: 'orders',
         component: OrdersComponent
+    },
+    {
+        path: 'remove_and_modify',
+        component: RemoveAndModifyComponent
     }
 ];

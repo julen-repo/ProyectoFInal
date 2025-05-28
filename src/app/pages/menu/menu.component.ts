@@ -31,4 +31,7 @@ export class MenuComponent {
   go_orders(): void {
     this.router.navigate(['orders']);
   }
+  go_remove_and_modify(): void {
+    this.router.navigate(['remove_and_modify']);
+  }
 }
