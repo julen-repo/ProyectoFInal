@@ -48,6 +48,7 @@
         <p class="fw-bold text-end mt-3">Total: {{ getTotal() | currency }}</p>
       </div>
       <div class="modal-footer">
+        <button class="btn btn-danger" (click)="borrarPedido()">Borrar pedido</button>
         <button class="btn btn-success" (click)="exportarAExcel()">Exportar a Excel</button>
       </div>
     </div>

@@ -43,24 +43,34 @@ export class OrdersComponent implements OnInit {
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     FileSaver.saveAs(blob, `Pedido_${this.numeroPedidoActual}.xlsx`);
-
-    // Lógica para eliminar el pedido después de exportar
-    this.pedidosService.eliminarPedidosPorNumeroPedido(this.numeroPedidoActual).subscribe({
-      next: () => {
-        // Eliminar visualmente el pedido de la lista
-        this.pedidos = this.pedidos.filter(p => p.numero_pedido !== this.numeroPedidoActual);
-        this.cerrarModal();
-      },
-      error: (err) => {
-        console.error('Error eliminando pedido:', err);
-      }
-    });
   }
-
 
   cerrarModal(): void {
     this.mostrarModal = false;
     this.pedidoSeleccionado = [];
     this.numeroPedidoActual = '';
   }
+
+  borrarPedido(): void {
+    console.log(this.pedidoSeleccionado.toString());
+    if (!confirm(`¿Estás seguro de que deseas eliminar el pedido #${this.numeroPedidoActual.toString()}?`)) return;
+
+    this.pedidosService.eliminarPedidosPorNumeroPedido(this.numeroPedidoActual.toString()).subscribe({
+      next: (res) => {
+        if (res.success) {
+          alert(res.message || 'Pedido eliminado correctamente');
+          this.ngOnInit();
+        } else {
+          alert(res.message || 'No se pudo eliminar el pedido');
+        }
+        this.cerrarModal();
+      },
+      error: (err) => {
+        console.error('Error eliminando pedido:', err);
+        alert('Ocurrió un error al intentar eliminar el pedido');
+        this.cerrarModal();
+      }
+    });
+  }
+
 }
