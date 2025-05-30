@@ -25,5 +25,5 @@ export class PedidosService {
   eliminarPedidosPorNumeroPedido(numeroPedido: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/eliminar_pedido.php?numero_pedido=${numeroPedido}`);
   }
-  
+
 }

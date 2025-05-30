@@ -94,6 +94,68 @@ export class RemoveAndModifyComponent {
     });
   }
 
+  selectedProduct: any = null;
+
+  abrirModalProducto(producto: any): void {
+    this.selectedProduct = { ...producto }; // Clonamos el producto
+  }
+
+  borrarProducto(): void {
+    if (!this.selectedProduct) return;
+
+    const confirmacion = confirm(`¿Eliminar el producto "${this.selectedProduct.name}"?`);
+
+    if (!confirmacion) return;
+
+    this.productsService.deleteProduct(this.selectedProduct.id).subscribe({
+      next: (res) => {
+        alert(res.message || 'Producto eliminado correctamente');
+        this.selectedProduct = null;
+        this.ngOnInit();
+        const modalElement = document.getElementById('productModal');
+        const modal = bootstrap.Modal.getInstance(modalElement!);
+        modal?.hide();
+      },
+      error: (err) => {
+        console.error('Error al eliminar producto', err);
+        alert('No se pudo eliminar el producto');
+      }
+    });
+  }
+
+  modificarProducto(nombre: string, cantidad: string, precio: string): void {
+    if (!this.selectedProduct) return;
+
+    const body = {
+      id: this.selectedProduct.id,
+      name: nombre.trim(),
+      quantity: parseInt(cantidad, 10),
+      price: parseFloat(precio)
+    };
+
+    // Validación opcional
+    if (!body.name || isNaN(body.quantity) || isNaN(body.price)) {
+      alert('Rellena todos los campos correctamente.');
+      return;
+    }
+
+    console.log(body);
+
+    this.productsService.updateProduct(body).subscribe({
+      next: (res) => {
+        alert((res as any).message || 'Producto modificado correctamente');
+        this.selectedProduct = null;
+        this.ngOnInit();
+        const modalElement = document.getElementById('productModal');
+        const modal = bootstrap.Modal.getInstance(modalElement!);
+        modal?.hide();
+      },
+      error: (err) => {
+        console.error('Error al modificar producto', err);
+        alert('Error al modificar el producto');
+      }
+    });
+  }
 
 
 }
