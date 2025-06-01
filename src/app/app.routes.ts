@@ -7,6 +7,7 @@ import { CreateProductsComponent } from './pages/menu/create/create-products/cre
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/menu/orders/orders.component';
 import { RemoveAndModifyComponent } from './pages/menu/remove-and-modify/remove-and-modify.component';
+import { ImportComponent } from './pages/menu/import/import.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     {
         path: 'remove_and_modify',
         component: RemoveAndModifyComponent
+    },
+    {
+        path: 'import',
+        component: ImportComponent
     }
 ];

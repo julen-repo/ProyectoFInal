@@ -13,6 +13,17 @@
     padding: 0.45rem 0.9rem;
 }
 
+/* Importar - Morado */
+.btn-purple {
+  color: #fff;
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+}
+.btn-purple:hover {
+  background-color: #5a32a3;
+  border-color: #5a32a3;
+}
+
 /* Crear Usuarios - Azul */
 .navbar .btn-outline-primary {
     background-color: #D6EAF8;

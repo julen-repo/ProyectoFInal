@@ -34,4 +34,7 @@ export class MenuComponent {
   go_remove_and_modify(): void {
     this.router.navigate(['remove_and_modify']);
   }
+  go_import(): void {
+    this.router.navigate(['import']);
+  }
 }

@@ -1,0 +1,6 @@
+<app-menu></app-menu>
+<div class="container mt-4">
+  <h4>Importar productos</h4>
+  <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" class="form-control" />
+  <button class="btn btn-primary mt-3" (click)="importarProductos()" [disabled]="!productos.length">Importar</button>
+</div>

@@ -14,7 +14,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
         <ng-container *ngIf="role === 'admin'">
-          
+
+          <li class="nav-item">
+            <button class="btn btn-purple" (click)="go_import()">
+              <i class="bi bi-download"></i> Importar
+            </button>
+          </li>
+
           <li class="nav-item">
             <button class="btn btn-outline-primary" (click)="go_createUsers()">
               <i class="bi bi-person-plus"></i> Crear Usuarios
