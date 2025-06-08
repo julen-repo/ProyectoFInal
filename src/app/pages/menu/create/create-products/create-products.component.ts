@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../../../services/products.service';
 import { CategoriesService, Category } from '../../../../services/categories.service';
 import { MenuComponent } from '../../menu.component';
-import { Validators } from '@angular/forms'; // <--- Asegúrate de tener esto
+import { Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-create-products',

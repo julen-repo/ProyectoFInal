@@ -31,5 +31,4 @@ export class CategoriesService {
       name
     });
   }
-
 }

@@ -1,16 +1,12 @@
 .card {
     background-color: #ffffff;
     border-radius: 1rem;
-    /* Bordes redondeados más pronunciados */
     transition: box-shadow 0.3s ease, transform 0.2s ease;
-    /* Transición suave para sombra y transformación */
 }
 
 .card:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    /* Sombra más visible */
     transform: translateY(-5px);
-    /* Efecto de "elevar" la tarjeta */
 }
 
 .card-body {
@@ -30,7 +26,6 @@ button.btn-primary {
 
 button.btn-primary:hover {
     background-color: #0a58ca;
-    /* Botón más claro al pasar por encima */
 }
 
 input.form-control,

@@ -29,12 +29,6 @@ export class CategoriesComponent {
     const role = localStorage.getItem('role');
     console.log('Rol del usuario:', role);
   }
-
-  cerrarSesion(): void {
-    localStorage.removeItem('user');
-    localStorage.removeItem('pass');
-    this.router.navigate(['']);
-  }
   verProductos(categoryId: number): void {
     this.router.navigate(['/products'], {
       state: { categoryId: categoryId }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';  // Importa el AuthService
+import { LoginService } from '../../services/login.service';
 import { NgIf } from '@angular/common';
 
 @Component({

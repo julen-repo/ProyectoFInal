@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CategoriesService, Category } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
 import { CurrencyPipe } from '@angular/common';
+
+
 declare var bootstrap: any;
 @Component({
   selector: 'app-remove-and-modify',
