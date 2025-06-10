@@ -38,7 +38,9 @@ export class OrdersComponent implements OnInit {
   }
 
   exportarAExcel(): void {
-    const worksheet = XLSX.utils.json_to_sheet(this.pedidoSeleccionado);
+    const dataSinId = this.pedidoSeleccionado.map(({ id, ...rest }) => rest);
+
+    const worksheet = XLSX.utils.json_to_sheet(dataSinId);
     const workbook = { Sheets: { 'Pedido': worksheet }, SheetNames: ['Pedido'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
