@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ImportService {
-  private apiUrl = 'http://localhost:80/API'; // Ajusta si es necesario
+  private apiUrl = 'http://187.33.158.55:80/API'; // Ajusta si es necesario
 
   constructor(private http: HttpClient) {}
 

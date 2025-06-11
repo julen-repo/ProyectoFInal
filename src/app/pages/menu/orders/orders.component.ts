@@ -4,6 +4,8 @@ import { PedidosService } from '../../../services/pedidos.service';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { CurrencyPipe } from '@angular/common';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-orders',
@@ -40,11 +42,43 @@ export class OrdersComponent implements OnInit {
   exportarAExcel(): void {
     const dataSinId = this.pedidoSeleccionado.map(({ id, ...rest }) => rest);
 
+    // 1. Crear Excel
     const worksheet = XLSX.utils.json_to_sheet(dataSinId);
     const workbook = { Sheets: { 'Pedido': worksheet }, SheetNames: ['Pedido'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
     FileSaver.saveAs(blob, `Pedido_${this.numeroPedidoActual}.xlsx`);
+
+    // 2. Crear PDF tipo factura
+    if (dataSinId.length === 0) return;
+
+    const headers = Object.keys(dataSinId[0]);
+    const data = dataSinId.map(obj => headers.map(h => obj[h]));
+
+    let total = 0;
+    dataSinId.forEach(item => {
+      console.log(dataSinId);
+      const cantidad = Number(item['cantidad']) || 0;
+      const precio = Number(item['price']) || 0;
+      total += cantidad * precio;
+    });
+
+    const doc = new jsPDF();
+    doc.text('Factura de Pedido', 14, 20);
+    doc.text(`Pedido Nº: ${this.numeroPedidoActual}`, 14, 28);
+    doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 150, 28);
+
+    autoTable(doc, {
+      head: [headers],
+      body: data,
+      startY: 35,
+    });
+
+    // Añadir total al final
+    const finalY = (doc as any).lastAutoTable.finalY || 40;
+    doc.text(`Total: ${total.toFixed(2)} €`, 14, finalY + 10);
+
+    doc.save(`Factura_${this.numeroPedidoActual}.pdf`);
   }
 
   cerrarModal(): void {
